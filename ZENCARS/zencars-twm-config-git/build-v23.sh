@@ -24,8 +24,10 @@ case $CHOICE in
     ;;
 
     1 )
-    arch-nspawn $ARCHCHROOT/root pacman -Syu
-    makechrootpkg -c -r $ARCHCHROOT
+    arch-nspawn $ARCHROOT
+/root pacman -Syu
+    makechrootpkg -c -r $ARCHROOT
+
 
     echo "Signing the package"
     echo "#############################################################################################"
