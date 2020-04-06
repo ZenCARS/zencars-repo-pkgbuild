@@ -9,7 +9,7 @@ destiny="$ZENCARS_REPODIR/x86_64"
 
 CHOICE=1
 
-search=zen
+search=zencars
 
 tput setaf 2
 echo "#############################################################################################"
