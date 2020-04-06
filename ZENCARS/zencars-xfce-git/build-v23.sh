@@ -24,8 +24,7 @@ case $CHOICE in
     ;;
 
     1 )
-    arch-nspawn $ARCHROOT
-/root pacman -Syu
+    arch-nspawn $ARCHROOT/root pacman -Syu
     makechrootpkg -c -r $ARCHROOT
 
 
