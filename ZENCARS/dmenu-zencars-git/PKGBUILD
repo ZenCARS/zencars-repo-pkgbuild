@@ -1,0 +1,40 @@
+# Maintainer:  Zengineer <zengineer@endocluster.com>
+# Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
+# Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
+# Contributor: Thorsten Töpper <atsutane-tu@freethoughts.de>
+# Contributor: Thayer Williams <thayer@archlinux.org>
+# Contributor: Jeff 'codemac' Mickey <jeff@archlinux.org>
+
+_pkgname=dmenu
+pkgname=$_pkgname-zencars-git
+pkgver=r573.754d6a7
+pkgrel=1
+pkgdesc="Zengineers build of dmenu, a generic menu for X"
+url="https://gitlab.com/Zengineer/dmenu-zengineer"
+arch=('i686' 'x86_64')
+license=('MIT')
+depends=('sh' 'libxinerama' 'libxft' 'freetype2')
+makedepends=('git')
+provides=($_pkgname)
+conflicts=($_pkgname)
+source=("${_pkgname}::git+${url}.git")
+sha256sums=('SKIP')
+
+pkgver() {
+  cd "${_pkgname}"
+  ( set -o pipefail
+    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
+}
+
+build(){
+  cd "$_pkgname"
+  make X11INC="/usr/include/X11" X11LIB="/usr/lib/X11"
+}
+
+package() {
+  cd "$_pkgname"
+  make PREFIX="/usr" DESTDIR="$pkgdir" install
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
+}
