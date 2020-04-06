@@ -1,0 +1,24 @@
+# Based on the file created for Arch Linux by:
+# Pierre Schmitz <pierre@archlinux.de>
+
+pkgname=zencars-keyring
+pkgver=20200707
+pkgrel=1
+pkgdesc='ZenCARS GPG keyring'
+arch=('any')
+url='http:/arcolinux.info'
+license=('GPL')
+install="${pkgname}.install"
+source=('Makefile'
+        'zencars.gpg'
+        'zencars-revoked'
+        'zencars-trusted')
+sha256sums=('dc4684237a8a03d239027eaf80e2e1b25bfd2504ab647f2d2fd47cc2e297bce9'
+            'a125f88457049a4ebaa2ab68caa24fd08eff4519513427693e9889c7c66dd1d6'
+            'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
+            'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855')
+
+package() {
+	cd "${srcdir}"
+	make PREFIX=/usr DESTDIR=${pkgdir} install
+}
