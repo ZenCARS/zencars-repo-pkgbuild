@@ -1,17 +1,17 @@
 # Maintainer: Zengineer <zengineer@endocluster.com>
-pkgname=zencars-bspwm-config-dconf-git
-_pkgname=zencars-bspwm-config-dconf
+pkgname=zencars-bspwm-dconf-git
+_pkgname=zencars-bspwm-dconf
 _destname1="/etc/skel/.config/"
 _licensedir="/usr/share/zencars/licenses/"
-pkgver=r2.779577c
+pkgver=r1.f4c728a
 pkgrel=1
 pkgdesc="Desktop configuration for ZenCARS"
 arch=('any')
-url="https://github.com/ZenCARS/zencars-bspwm-config-dconf"
+url="https://github.com/ZenCARS/zencars-bspwm-dconf"
 license=('GPL3')
 makedepends=('git')
 depends=('bash')
-conflicts=('arcolinux-bspwm-config-dconf')
+conflicts=()
 provides=("${pkgname}")
 options=(!strip !emptydirs)
 source=("${_pkgname}::git+${url}.git")
