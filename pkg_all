@@ -1,0 +1,14 @@
+#!/bin/bash
+
+cd "ZENCARS"
+
+shopt -s nullglob
+
+pkgs=(*)
+
+for pkgdir in "${pkgs[@]}"; do
+    echo "# $pkgdir"
+    cd "$pkgdir"
+    makemypkg
+    cd ..
+done

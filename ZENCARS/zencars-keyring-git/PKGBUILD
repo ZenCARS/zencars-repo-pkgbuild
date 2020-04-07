@@ -14,11 +14,11 @@ source=('Makefile'
         'zencars-revoked'
         'zencars-trusted')
 sha256sums=('dc4684237a8a03d239027eaf80e2e1b25bfd2504ab647f2d2fd47cc2e297bce9'
-            'a125f88457049a4ebaa2ab68caa24fd08eff4519513427693e9889c7c66dd1d6'
+            '45c3f6f9ad40fa3b044a409174fe82fb1cf73d2b6a0559acc376b338edfea2f9'
             'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
             'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855')
 
 package() {
 	cd "${srcdir}"
-	make PREFIX=/usr DESTDIR=${pkgdir} install
+	make PREFIX=/usr DESTDIR="${pkgdir}" install
 }
