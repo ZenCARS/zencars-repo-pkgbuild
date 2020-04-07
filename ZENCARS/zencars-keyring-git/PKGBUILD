@@ -2,7 +2,7 @@
 # Pierre Schmitz <pierre@archlinux.de>
 
 pkgname=zencars-keyring
-pkgver=20200707
+pkgver=20200407
 pkgrel=1
 pkgdesc='ZenCARS GPG keyring'
 arch=('any')
@@ -17,6 +17,12 @@ sha256sums=('dc4684237a8a03d239027eaf80e2e1b25bfd2504ab647f2d2fd47cc2e297bce9'
             '45c3f6f9ad40fa3b044a409174fe82fb1cf73d2b6a0559acc376b338edfea2f9'
             'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
             'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855')
+
+pkgver() {
+  ( set -o pipefail
+    date -I | sed 's/\([^-]*-g\)/r\1/;s/-//g'
+  )
+}
 
 package() {
 	cd "${srcdir}"
